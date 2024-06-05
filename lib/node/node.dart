@@ -1,6 +1,5 @@
 import 'package:animated_tree_view/helpers/exceptions.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/v4.dart';
 
 import 'base/i_node.dart';
 import 'base/i_node_actions.dart';
@@ -29,7 +28,7 @@ class Node extends INode implements INodeActions {
       : assert(key == null || !key.contains(INode.PATH_SEPARATOR),
             "Key should not contain the PATH_SEPARATOR '${INode.PATH_SEPARATOR}'"),
         this.children = <String, Node>{},
-        this.key = key ?? UuidV4().generate();
+        this.key = key ?? UniqueKey().toString();
 
   /// Alternate factory constructor that should be used for the [root] nodes.
   factory Node.root() => Node(key: INode.ROOT_KEY);
